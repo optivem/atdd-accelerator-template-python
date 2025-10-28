@@ -2,6 +2,7 @@ import pytest
 import httpx
 
 
+@pytest.mark.smoke
 @pytest.mark.asyncio
 async def test_ui_smoke_test():
     """Basic smoke test for UI endpoints."""

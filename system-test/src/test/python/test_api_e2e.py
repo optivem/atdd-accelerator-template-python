@@ -3,6 +3,7 @@ import httpx
 import asyncio
 
 
+@pytest.mark.e2e
 @pytest.mark.asyncio
 async def test_get_todos_should_return_todo_with_expected_format():
     """Test that getting todos returns expected JSON format.

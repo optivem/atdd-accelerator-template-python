@@ -2,6 +2,7 @@ import pytest
 import httpx
 
 
+@pytest.mark.e2e
 @pytest.mark.asyncio  
 async def test_ui_e2e_test():
     """End-to-end test for UI functionality."""
