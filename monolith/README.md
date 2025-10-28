@@ -86,14 +86,3 @@ docker build -t atdd-accelerator-template-python .
 ```bash
 docker run -p 8080:8080 atdd-accelerator-template-python
 ```
-
-## ATDD Development
-
-This is a walking skeleton designed for ATDD development. To add features:
-
-1. Write a failing acceptance test
-2. Write minimal code to make it pass
-3. Refactor if needed
-4. Repeat
-
-Follow the TODO comments in `src/main.py` to add your features using the ATDD approach.
