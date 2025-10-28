@@ -48,11 +48,13 @@ jobs:
 
     - name: Run Python Tests
       run: |
+        export PYTHONPATH="${PYTHONPATH}:$(pwd)/src/main/python"
         pytest src/test/python/ -v
       working-directory: monolith
 
     - name: Run Python Linting
       run: |
+        export PYTHONPATH="${PYTHONPATH}:$(pwd)/src/main/python"
         flake8 src/main/python/ --max-line-length=100 --extend-ignore=E203,W503
         black --check src/main/python/
         isort --check-only src/main/python/
