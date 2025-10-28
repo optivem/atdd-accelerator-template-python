@@ -46,13 +46,13 @@ test = [
 "Source" = "https://github.com/optivem/atdd-accelerator-template-python"
 
 [tool.setuptools.packages.find]
-where = ["src/main/python"]
+where = ["src"]
 
 [tool.setuptools.package-dir]
-"" = "src/main/python"
+"" = "src"
 
 [tool.pytest.ini_options]
-testpaths = ["src/test/python"]
+testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]

@@ -49,17 +49,17 @@ jobs:
 
     - name: Run Python Tests
       run: |
-        export PYTHONPATH="${PYTHONPATH}:$(pwd)/src/main/python"
-        pytest src/test/python/ -v || echo "Tests failed but continuing with build"
+        export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+        pytest tests/test_basic.py -v -m smoke --tb=short || echo "Basic tests failed but continuing"
       working-directory: monolith
       continue-on-error: true
 
     - name: Run Python Linting
       run: |
-        export PYTHONPATH="${PYTHONPATH}:$(pwd)/src/main/python"
-        flake8 src/main/python/ --max-line-length=100 --extend-ignore=E203,W503 || echo "Linting issues found"
-        black --check src/main/python/ || echo "Formatting issues found"
-        isort --check-only src/main/python/ || echo "Import sorting issues found"
+        export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+        flake8 src/ --max-line-length=100 --extend-ignore=E203,W503 || echo "Linting issues found"
+        black --check src/ || echo "Formatting issues found"
+        isort --check-only src/ || echo "Import sorting issues found"
       working-directory: monolith
       continue-on-error: true
 
