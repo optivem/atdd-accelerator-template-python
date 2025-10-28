@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 import uvicorn
+import os
+from pathlib import Path
 
 from .config import settings
 from .controllers.api.todo_api_controller import todo_api_router
@@ -20,8 +22,13 @@ def create_app() -> FastAPI:
         description="ATDD Accelerator Template - Monolith (Python)"
     )
     
-    # Mount static files
-    app.mount("/static", StaticFiles(directory="src/main/resources/static"), name="static")
+    # Get the static files directory path relative to this file
+    current_dir = Path(__file__).parent
+    static_dir = current_dir.parent.parent.parent.parent.parent / "main" / "resources" / "static"
+    
+    # Mount static files if the directory exists
+    if static_dir.exists():
+        app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
     
     # Include API routers
     app.include_router(todo_api_router, prefix="/api")

@@ -1,11 +1,13 @@
 import pytest
-from fastapi.testclient import TestClient
-
-# We'll need to adjust this import path based on the actual structure
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'main', 'python'))
+from pathlib import Path
 
+# Add the main Python source to the path
+main_python_path = Path(__file__).parent.parent.parent / "main" / "python"
+sys.path.insert(0, str(main_python_path))
+
+from fastapi.testclient import TestClient
 from com.optivem.atddaccelerator.template.monolith.monolith_application import create_app
 
 
