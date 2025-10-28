@@ -99,7 +99,7 @@ jobs:
       run: echo "Run External System Contract Tests"
 
     - name: Run E2E Tests
-      run: pytest src/test/python/ -m e2e -v
+      run: pytest . -m e2e -v
       working-directory: system-test
   
   prerelease:
