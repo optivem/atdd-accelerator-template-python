@@ -1,6 +1,15 @@
-# Monolith Application (Python)
+# Monolith Application
 
-This is the main Python FastAPI application for the ATDD Accelerator Template.
+This is a walking skeleton FastAPI application that serves as the foundation for ATDD development.
+
+## Technology Stack
+
+- **Python 3.11+**: Modern Python with type hints
+- **FastAPI**: Modern, fast web framework for building APIs
+- **Uvicorn**: ASGI server implementation
+- **Pydantic**: Data validation using Python type annotations
+- **Pytest**: Testing framework with async support
+- **Docker**: Containerization
 
 ## Quick Start
 
@@ -22,20 +31,12 @@ This is the main Python FastAPI application for the ATDD Accelerator Template.
 
 3. **Run the application:**
    ```bash
-   python -m uvicorn com.optivem.atddaccelerator.template.monolith.monolith_application:app --host 0.0.0.0 --port 8080 --reload
-   ```
-
-   Or use the provided scripts:
-   ```bash
-   # Windows
-   start.bat
-   
-   # Linux/macOS
-   ./start.sh
+   python -m uvicorn src.main:app --host 0.0.0.0 --port 8080 --reload
    ```
 
 4. **Access the application:**
    - Home: http://localhost:8080
+   - Health Check: http://localhost:8080/health
    - API Docs: http://localhost:8080/docs
    - Todo Manager: http://localhost:8080/todos
 
@@ -43,38 +44,37 @@ This is the main Python FastAPI application for the ATDD Accelerator Template.
 
 ```
 src/
-├── main/
-│   ├── python/              # Python source code
-│   │   └── com/optivem/atddaccelerator/template/monolith/
-│   │       ├── models/      # Data models
-│   │       ├── controllers/ # API and web controllers
-│   │       ├── config.py    # Configuration
-│   │       └── monolith_application.py  # Main app
-│   └── resources/
-│       └── static/          # Static HTML/CSS/JS files
-└── test/
-    └── python/              # Unit tests
+├── main.py              # Main FastAPI application
+└── static/              # Static HTML files
+tests/
+├── test_main.py         # Unit tests
+└── test_basic.py        # Basic smoke tests
+requirements.txt         # Python dependencies
+pyproject.toml          # Project configuration
+Dockerfile              # Container definition
 ```
 
 ## API Endpoints
 
-- `GET /api/echo` - Echo endpoint
+- `GET /health` - Health check endpoint
+- `GET /` - Home page (HTML)
+- `GET /todos` - Todo manager page (HTML)
+- `GET /api/echo` - Simple echo endpoint
 - `GET /api/todos/{id}` - Get todo by ID
-- `GET /` - Home page
-- `GET /todos` - Todo manager page
-
-## Environment Variables
-
-- `TODOS_API_HOST` - External API host (default: https://jsonplaceholder.typicode.com)
-- `HOST` - Server host (default: 0.0.0.0)
-- `PORT` - Server port (default: 8080)
-- `DEBUG` - Debug mode (default: false)
+- `GET /api/todos` - Get all todos
 
 ## Development
 
 ### Running Tests
 ```bash
-pytest src/test/python/
+# All tests
+pytest
+
+# Smoke tests only
+pytest -m smoke
+
+# With verbose output
+pytest -v
 ```
 
 ### Building Docker Image
@@ -86,3 +86,14 @@ docker build -t atdd-accelerator-template-python .
 ```bash
 docker run -p 8080:8080 atdd-accelerator-template-python
 ```
+
+## ATDD Development
+
+This is a walking skeleton designed for ATDD development. To add features:
+
+1. Write a failing acceptance test
+2. Write minimal code to make it pass
+3. Refactor if needed
+4. Repeat
+
+Follow the TODO comments in `src/main.py` to add your features using the ATDD approach.
