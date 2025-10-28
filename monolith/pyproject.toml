@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atdd-accelerator-template-monolith"
+version = "0.0.1"
+description = "ATDD Accelerator Template - Monolith (Python)"
+readme = "README.md"
+license = {text = "Unlicense"}
+authors = [
+    {name = "Valentina Jemuović", email = "valentina@optivem.com"},
+    {name = "Jelena Cupać", email = "jelena@optivem.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: The Unlicense (Unlicense)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi==0.115.5",
+    "uvicorn[standard]==0.32.1",
+    "httpx==0.28.1",
+    "pydantic==2.10.2",
+    "pydantic-settings==2.6.1",
+    "python-multipart==0.0.12",
+    "aiofiles==24.1.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest==8.3.4",
+    "pytest-asyncio==0.24.0",
+    "pytest-httpx==0.32.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/optivem/atdd-accelerator-template-python"
+"Bug Reports" = "https://github.com/optivem/atdd-accelerator-template-python/issues"
+"Source" = "https://github.com/optivem/atdd-accelerator-template-python"
+
+[tool.setuptools.packages.find]
+where = ["src/main/python"]
+
+[tool.pytest.ini_options]
+testpaths = ["src/test/python"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
