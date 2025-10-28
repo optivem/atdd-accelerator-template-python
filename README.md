@@ -30,19 +30,6 @@ See individual component READMEs for detailed setup instructions:
 - [`monolith/README.md`](monolith/README.md) - Application setup and development
 - [`system-test/README.md`](system-test/README.md) - Testing setup and execution
 
-## Migration from Java
-
-This project has been migrated from the original Java Spring Boot implementation to Python FastAPI. Key changes include:
-
-- **Java Spring Boot** → **Python FastAPI**
-- **Gradle** → **pip + pyproject.toml**
-- **JUnit** → **pytest**
-- **Jackson/JSON** → **Pydantic models**
-- **RestTemplate** → **HTTPX async client**
-- **application.yml** → **Pydantic Settings with environment variables**
-
-The core functionality and API contract remain the same to ensure compatibility with existing clients and tests.
-
 ## License
 
 [![Unlicense](https://img.shields.io/badge/license-Unlicense-lightgrey.svg)](http://unlicense.org/)
