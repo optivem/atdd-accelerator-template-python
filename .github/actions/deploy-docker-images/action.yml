@@ -67,7 +67,7 @@ runs:
       working-directory: system-test
         
     - name: Run Smoke Tests
-      run: pytest src/test/python/ -m smoke -v
+      run: pytest . -m smoke -v
       shell: bash
       working-directory: system-test
 
