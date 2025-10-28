@@ -53,22 +53,21 @@ runs:
         wait-seconds: '10'
         working-directory: system-test
       
-    - name: Setup Java
-      uses: actions/setup-java@v4
+    - name: Setup Python
+      uses: actions/setup-python@v5
       with:
-        java-version: 25
-        distribution: temurin
+        python-version: '3.11'
+        cache: 'pip'
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v4
-    
-    - name: Make Gradle Wrapper executable
-      run: chmod +x ./gradlew
+    - name: Install Python Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
       shell: bash
       working-directory: system-test
         
     - name: Run Smoke Tests
-      run: ./gradlew test --tests com.optivem.atddaccelerator.template.systemtest.smoketests.*
+      run: pytest src/test/python/ -m smoke -v
       shell: bash
       working-directory: system-test
 
