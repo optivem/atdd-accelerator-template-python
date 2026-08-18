@@ -1,3 +1,5 @@
+**NOTICE: This project is no longer maintained. Please see the updated project: https://github.com/optivem/shop**
+
 # ATDD Accelerator Template (Python)
 
 [![commit-stage-monolith](https://github.com/optivem/atdd-accelerator-template-python/actions/workflows/commit-stage-monolith.yml/badge.svg)](https://github.com/optivem/atdd-accelerator-template-python/actions/workflows/commit-stage-monolith.yml)
